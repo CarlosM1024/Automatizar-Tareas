@@ -3,7 +3,6 @@
 A comprehensive collection of Python scripts designed to automate repetitive tasks and streamline your workflow. Perfect for developers, content creators, and anyone looking to save time through automation.
 
 ![Python Version](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Maintenance](https://img.shields.io/badge/Maintained-Yes-brightgreen.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/CarlosM1024/Automatizar-Tareas)
 
@@ -15,8 +14,6 @@ A comprehensive collection of Python scripts designed to automate repetitive tas
 - [Requirements](#-requirements)
 - [Project Structure](#-project-structure)
 - [Contributing](#-contributing)
-- [License](#-license)
-- [Contact](#-contact)
 
 ## ✨ Features
 
