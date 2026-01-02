@@ -94,7 +94,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 This project was initially inspired by Python automation tutorials from:
 
 **Channel Name:** Código Espinoza - Automatiza tu Vida  
-**Video Link:** [[link-del-video](https://www.youtube.com/@CodigoEspinoza)]  
+**Channel Link:** [[Código Espinoza - Automatiza tu Vida](https://www.youtube.com/@CodigoEspinoza)]  
 **Creator:** Iván Espinoza
 
 ### Educational Resources
