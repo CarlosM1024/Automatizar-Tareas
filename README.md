@@ -11,8 +11,6 @@ A comprehensive collection of Python scripts designed to automate repetitive tas
 - [Installation](#-installation)
 - [Scripts Overview](#-scripts-overview)
 - [Usage Examples](#-usage-examples)
-- [Requirements](#-requirements)
-- [Project Structure](#-project-structure)
 - [Contributing](#-contributing)
 
 ## ✨ Features
@@ -33,14 +31,14 @@ A comprehensive collection of Python scripts designed to automate repetitive tas
 
 ### Clone and Setup
 ```bash
-# Clone the repository
+# Clone the repository.
 git clone https://github.com/CarlosM1024/Automatizar-Tareas.git
 cd Automatizar-Tareas
 
 # Install dependencies
 pip install -r requirements.txt
 ````
-## Scripts
+## 📂 Scripts-overview
 
 Here's a list of the scripts available in this repository:
 
@@ -53,7 +51,7 @@ Here's a list of the scripts available in this repository:
 -   **organizar.py**: Script to organize files in a directory.
 -   **redimensiona.py**: Script to resize images.
 
-## Usage
+## 🎯 Usage-examples
 
 To use these scripts, you need to have Python installed on your system. You can then run the scripts from the command line using the following command:
 
@@ -66,8 +64,6 @@ Make sure to replace `script_name.py` with the actual name of the script you wan
 ```bash
 pip install -r requirements.txt
 ```
-
-(Note: A `requirements.txt` file is not currently present in the repository. If any of the scripts require external libraries, you should create this file and list the dependencies.)
 
 ### Examples
 
@@ -87,7 +83,7 @@ pip install -r requirements.txt
 
     This script will guide you through the process of merging PDF files.
 
-## Contributing
+## 🤝 Contributing
 
 If you'd like to contribute to this project, feel free to submit a pull request. Please make sure your code follows the existing style and includes appropriate comments.
 
