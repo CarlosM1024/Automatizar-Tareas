@@ -3,7 +3,7 @@ from heapq import merge
 
 import flet as ft
 
-from automatizar_tareas.fusionar_pdf import fusionar_pdf
+from fusionar_pdf import fusionar_pdf
 from borrar_dup import find_dup, delete_file
 from organizar import organizar_folder
 from redimensiona import batch_resize
@@ -13,7 +13,7 @@ from cambiar_nombre import cambiar_nombre
 
 def main(page: ft.Page):
     page.theme_mode=ft.ThemeMode.DARK
-    page.bgcolor=ft.colors.BACKGROUND
+    page.bgcolor=ft.Colors.GREY_900
     page.title='Borrar duplicados'
     page.window.width=1000
     page.window.height=700
@@ -21,13 +21,13 @@ def main(page: ft.Page):
 
     #Tema personalizado------------------------------------------------------------------------------------------------------------------------------------------------------
     page.theme=ft.Theme(
-        color_scheme_seed=ft.colors.BLUE,
+        color_scheme_seed=ft.Colors.BLUE,
         visual_density=ft.VisualDensity.COMFORTABLE,
         color_scheme=ft.ColorScheme(
-            primary=ft.colors.BLUE,
-            secondary=ft.colors.ORANGE,
-            background=ft.colors.GREY_900,
-            surface=ft.colors.GREY_800,
+            primary=ft.Colors.BLUE,
+            secondary=ft.Colors.ORANGE,
+            background=ft.Colors.GREY_900,
+            surface=ft.Colors.GREY_800,
         )
     )
 
@@ -52,7 +52,7 @@ def main(page: ft.Page):
     selected_dir_text = ft.Text(
         'No se ha seleccionado ninguna carpeta',
         size=16,
-        color=ft.colors.BLUE_200,
+        color=ft.Colors.BLUE_200,
     )
     result_text = ft.Text(size=16, weight=ft.FontWeight.BOLD)
     duplicates_list = ft.ListView(
@@ -62,9 +62,9 @@ def main(page: ft.Page):
     )
     delete_all_btn = ft.ElevatedButton(
         'Eliminar todos los duplicados',
-        color=ft.colors.WHITE,
-        bgcolor=ft.colors.RED_900,
-        icon=ft.icons.DELETE_SWEEP,
+        color=ft.Colors.WHITE,
+        bgcolor=ft.Colors.RED_900,
+        icon=ft.Icons.DELETE_SWEEP,
         visible=False,
         on_click=lambda e: delete_all_duplicates(),
     )
@@ -73,7 +73,7 @@ def main(page: ft.Page):
     organize_dir_text = ft.Text(
         'No se ha seleccionado ninguna carpeta',
         size=16,
-        color=ft.colors.BLUE_200,
+        color=ft.Colors.BLUE_200,
     )
     organize_result_text = ft.Text(
         size=16,
@@ -84,7 +84,7 @@ def main(page: ft.Page):
     resized_input_text = ft.Text(
         'Carpeta de entrada: No seleccionada',
         size=16,
-        color=ft.colors.BLUE_200,
+        color=ft.Colors.BLUE_200,
     )
     resized_output_text = ft.Text(
         'Carpeta de salida: No seleccionada',
@@ -114,7 +114,7 @@ def main(page: ft.Page):
     convert_input_text = ft.Text(
         'No se ha seleccionado ninguna imagen',
         size=16,
-        color=ft.colors.BLUE_200,
+        color=ft.Colors.BLUE_200,
     )
     convert_result_text = ft.Text(
         size=16,
@@ -138,7 +138,7 @@ def main(page: ft.Page):
     audio_input_text = ft.Text(
         'No se ha seleccionado ninguna carpeta',
         size=16,
-        color=ft.colors.BLUE_200,
+        color=ft.Colors.BLUE_200,
     )
 
     audio_result_text = ft.Text(
@@ -151,14 +151,14 @@ def main(page: ft.Page):
     )
     current_video_text = ft.Text(
         size=16,
-        color=ft.colors.BLUE_200,
+        color=ft.Colors.BLUE_200,
     )
 
     #Controle para la vista de fusion de PDFS----------------------------------------------------------------------------------------------------------------------
     pdf_input_text = ft.Text(
         'No se ha seleccionado ninguna carpeta para PDFs',
         size=16,
-        color=ft.colors.BLUE_200,
+        color=ft.Colors.BLUE_200,
     )
 
     pdf_result_text = ft.Text(
@@ -170,7 +170,7 @@ def main(page: ft.Page):
     rename_input_text = ft.Text(
         'No se ha seleccionado ninguna carpeta',
         size=16,
-        color=ft.colors.BLUE_200,
+        color=ft.Colors.BLUE_200,
     )
     rename_result_text = ft.Text(
         size=16,
@@ -219,7 +219,7 @@ def main(page: ft.Page):
         try:
             if not state['rename_input_folder']:
                 rename_result_text.value = 'Error: Selecciona una carpeta para renombrar'
-                rename_result_text.color = ft.colors.RED_400
+                rename_result_text.color = ft.Colors.RED_400
                 rename_result_text.update()
                 return
 
@@ -227,32 +227,32 @@ def main(page: ft.Page):
             if option == 'Cambiar':
                 if not rename_search_text.value:
                     rename_result_text.value = 'Error: Ingresar la palabra a buscar'
-                    rename_result_text.color = ft.colors.RED_400
+                    rename_result_text.color = ft.Colors.RED_400
                     rename_result_text.update()
                     return
                 value = [rename_search_text.value, rename_replace_text.value]
             else:
                 if not rename_prefix_text.value:
                     rename_result_text.value = 'Error: Ingresar el prefijo'
-                    rename_result_text.color = ft.colors.RED_400
+                    rename_result_text.color = ft.Colors.RED_400
                     rename_result_text.update()
                     return
                 value = rename_prefix_text.value
             cambiar_nombre(state['rename_input_folder'], option, value)
             rename_result_text.value = 'Archivos renombrados exitosamente'
-            rename_result_text.color = ft.colors.GREEN_400
+            rename_result_text.color = ft.Colors.GREEN_400
             rename_result_text.update()
 
         except Exception as e:
             rename_result_text.value = f'Error al renombrar: {str(e)}'
-            rename_result_text.color = ft.colors.RED_400
+            rename_result_text.color = ft.Colors.RED_400
             rename_result_text.update()
 
     def extract_audio():
         try:
             if not state['audio_input_folder']:
                 audio_result_text.value = 'Error: Selecciona carpeta con videos'
-                audio_result_text.color = ft.colors.RED_400
+                audio_result_text.color = ft.Colors.RED_400
                 audio_result_text.update()
                 return
 
@@ -275,13 +275,13 @@ def main(page: ft.Page):
             extraer_audio(input_folder, output_folder, progress_callback)
 
             audio_result_text.value = 'Audio extraido exitosamente'
-            audio_result_text.color = ft.colors.GREEN_400
+            audio_result_text.color = ft.Colors.GREEN_400
             audio_result_text.update()
             current_video_text.value = 'Proceso finalizado'
 
         except Exception as e:
             audio_result_text.value = f'Error durante la extraccion: {str(e)}'
-            audio_result_text.color = ft.colors.RED_400
+            audio_result_text.color = ft.Colors.RED_400
             audio_result_text.update()
 
         finally:
@@ -295,18 +295,18 @@ def main(page: ft.Page):
         try:
             if not state['pdf_input_folder']:
                 pdf_result_text.value = 'Error: Selecciona una carpeta para PDFs'
-                pdf_result_text.color = ft.colors.RED_400
+                pdf_result_text.color = ft.Colors.RED_400
                 pdf_result_text.update()
                 return
             output_folder = os.path.join(state['pdf_input_folder'], 'pdfs_fusionados.pdf')
             fusionar_pdf(state['pdf_input_folder'], output_folder)
             pdf_result_text.value = f'PDFs fusionados en {output_folder}'
-            pdf_result_text.color = ft.colors.GREEN_400
+            pdf_result_text.color = ft.Colors.GREEN_400
             pdf_result_text.update()
 
         except Exception as e:
             pdf_result_text.value = f'Error al fusionar pdfs: {str(e)}'
-            pdf_result_text.color = ft.colors.RED_400
+            pdf_result_text.color = ft.Colors.RED_400
             pdf_result_text.update()
 
 
@@ -387,22 +387,22 @@ def main(page: ft.Page):
         try:
             if not state['convert_input_file']:
                 convert_result_text.value = 'Error: Selecciona imagen'
-                convert_result_text.color = ft.colors.RED_400
+                convert_result_text.color = ft.Colors.RED_400
                 convert_result_text.update()
                 return
             if not formt_dropdown.value:
                 convert_result_text.value = 'Error: Seleciona formato de salida'
-                convert_result_text.color = ft.colors.RED_400
+                convert_result_text.color = ft.Colors.RED_400
                 convert_result_text.update()
                 return
             convertir_imagen(state['convert_input_file'], formt_dropdown.value)
             convert_result_text.value = 'Imagen convertida exitosamente'
-            convert_result_text.color = ft.colors.GREEN_400
+            convert_result_text.color = ft.Colors.GREEN_400
             convert_result_text.update()
 
         except Exception as e:
             convert_result_text.value = f'Error al convertir imagen: {str(e)}'
-            convert_result_text.color = ft.colors.RED_400
+            convert_result_text.color = ft.Colors.RED_400
             convert_result_text.update()
 
 
@@ -410,7 +410,7 @@ def main(page: ft.Page):
         try:
             if not state['resize_input_folder'] or not state['resize_output_folder']:
                 resized_result_text.value = 'Error: Seleccione las carpetas de entrada y salida'
-                resized_result_text.color = ft.colors.RED_400
+                resized_result_text.color = ft.Colors.RED_400
                 resized_result_text.update()
                 return
 
@@ -419,23 +419,23 @@ def main(page: ft.Page):
 
             if width <= 0 or height <= 0:
                 resized_result_text.value = 'Error: Las dimensiones deben de ser mayor a 0'
-                resized_result_text.color=ft.colors.RED_400
+                resized_result_text.color=ft.Colors.RED_400
                 resized_result_text.update()
                 return
 
             batch_resize(state['resize_input_folder'], state['resize_output_folder'], width, height)
             resized_result_text.value = 'Imagenes redimensionadas exitosamente'
-            resized_result_text.color = ft.colors.GREEN_400
+            resized_result_text.color = ft.Colors.GREEN_400
             resized_result_text.update()
 
         except ValueError:
             resized_result_text.value = 'Error: Ingresa dimensiones validas'
-            resized_result_text.color = ft.colors.RED_400
+            resized_result_text.color = ft.Colors.RED_400
             resized_result_text.update()
 
         except Exception as e:
             resized_result_text.value = f'Error al redimensionar imagenes: {str(e)}'
-            resized_result_text.color = ft.colors.RED_400
+            resized_result_text.color = ft.Colors.RED_400
             resized_result_text.update()
 
 
@@ -443,10 +443,10 @@ def main(page: ft.Page):
         try:
             organizar_folder(directory)
             organize_result_text.value='Archivos organizados exitosamente'
-            organize_result_text.color=ft.colors.GREEN_400
+            organize_result_text.color=ft.Colors.GREEN_400
         except Exception as e:
             organize_result_text.value='Error al organizar archivos'
-            organize_result_text.color=ft.colors.RED_400
+            organize_result_text.color=ft.Colors.RED_400
             print(e)
         organize_result_text.update()
 
@@ -455,11 +455,11 @@ def main(page: ft.Page):
         state['current_duplicates'] = find_dup(directory)
         if not state['current_duplicates']:
             result_text.value='No se encontraron duplicados'
-            result_text.color=ft.colors.GREEN_400
+            result_text.color=ft.Colors.GREEN_400
             delete_all_btn.visible=False
         else:
             result_text.value=f'Se encontraron {len(state["current_duplicates"])} archivos duplicados'
-            result_text.color=ft.colors.ORANGE_400
+            result_text.color=ft.Colors.ORANGE_400
             delete_all_btn.visible=True
             for dup_file, original in state['current_duplicates']:
                 dup_row = ft.Row([
@@ -467,13 +467,13 @@ def main(page: ft.Page):
                         f'Duplicado: {dup_file}\nOriginal: {original}',
                         size=12,
                         expand=True,
-                        color=ft.colors.BLUE_200,
+                        color=ft.Colors.BLUE_200,
                     ),
                     ft.ElevatedButton(
                         'Eliminar',
-                        icon=ft.icons.DELETE,
-                        color=ft.colors.WHITE,
-                        bgcolor=ft.colors.RED_900,
+                        icon=ft.Icons.DELETE,
+                        color=ft.Colors.WHITE,
+                        bgcolor=ft.Colors.RED_900,
                         on_click=lambda e, path=dup_file: delete_duplicate(path)
                     )
                 ])
@@ -485,7 +485,7 @@ def main(page: ft.Page):
     def delete_duplicate(filepath):
         if delete_file(filepath):
             result_text.value=f'Archivo eliminado: {filepath}'
-            result_text.color=ft.colors.GREEN_400
+            result_text.color=ft.Colors.GREEN_400
             for control in duplicates_list.controls[:]:
                 if filepath in control.controls[0].value:
                     duplicates_list.controls.remove(control)
@@ -494,7 +494,7 @@ def main(page: ft.Page):
                 delete_all_btn.visible=False
         else:
             result_text.value=f'Error al eliminar archivo: {filepath}'
-            result_text.color=ft.colors.RED_400
+            result_text.color=ft.Colors.RED_400
         duplicates_list.update()
         result_text.update()
         delete_all_btn.update()
@@ -515,11 +515,10 @@ def main(page: ft.Page):
 
         if failed_count == 0:
             result_text.value=f'Se eliminaron exitosamente {deleted_count} archivos duplicados'
-            result_text.color=ft.colors.GREEN_400
+            result_text.color=ft.Colors.GREEN_400
         else:
             result_text.value=f'Se eliminaron {deleted_count} archivos duplicados. Fallaron {failed_count} archivos'
-            result_text.color=ft.colors.RED_400
-
+            result_text.color=ft.Colors.RED_400
         duplicates_list.update()
         result_text.update()
         delete_all_btn.update()
@@ -543,16 +542,16 @@ def main(page: ft.Page):
                     'Archivos duplicados',
                     size=24,
                     weight=ft.FontWeight.BOLD,
-                    color=ft.colors.BLUE_200,
+                    color=ft.Colors.BLUE_200,
                 ),
                 margin=ft.margin.only(bottom=10)
             ),
             ft.Row([
                 ft.ElevatedButton(
                     'Seleccionar Carpeta',
-                    icon=ft.icons.FOLDER_OPEN,
-                    color=ft.colors.WHITE,
-                    bgcolor=ft.colors.BLUE_900,
+                    icon=ft.Icons.FOLDER_OPEN,
+                    color=ft.Colors.WHITE,
+                    bgcolor=ft.Colors.BLUE_900,
                     on_click=lambda _: folder_picker.get_directory_path(),
                 ),
                 delete_all_btn,
@@ -564,11 +563,11 @@ def main(page: ft.Page):
             result_text,
             ft.Container(
                 content=duplicates_list,
-                border=ft.border.all(2, ft.colors.BLUE_400),
+                border=ft.border.all(2, ft.Colors.BLUE_400),
                 border_radius=10,
                 padding=20,
                 margin=ft.margin.only(top=10),
-                bgcolor=ft.colors.BLUE_GREY_800,
+                bgcolor=ft.Colors.BLUE_GREY_800,
                 expand=True,
             )
         ]),
@@ -584,15 +583,15 @@ def main(page: ft.Page):
                     'Organizar archivos',
                     size=24,
                     weight=ft.FontWeight.BOLD,
-                    color=ft.colors.BLUE_200,
+                    color=ft.Colors.BLUE_200,
                 ),
                 margin=ft.margin.only(bottom=10)
             ),
             ft.ElevatedButton(
                 'Seleccionar Carpeta',
-                icon=ft.icons.FOLDER_OPEN,
-                color=ft.colors.WHITE,
-                bgcolor=ft.colors.BLUE_900,
+                icon=ft.Icons.FOLDER_OPEN,
+                color=ft.Colors.WHITE,
+                bgcolor=ft.Colors.BLUE_900,
                 on_click=lambda _: folder_picker.get_directory_path(),
             ),
             ft.Container(
@@ -605,7 +604,7 @@ def main(page: ft.Page):
                     ft.Text(
                         'Los archivos serán organizados en las siguientes carpetas:',
                         size=16,
-                        color=ft.colors.BLUE_200,
+                        color=ft.Colors.BLUE_200,
                     ),
                     ft.Text('* Imagenes (.jpeg, .jpg, .png, .gif)', size=14),
                     ft.Text('* Videos (.mp4, .mov, .avi, .mkv)', size=14),
@@ -613,11 +612,11 @@ def main(page: ft.Page):
                     ft.Text('* Datasets (.xlsx, .csv, .sav)', size=14),
                     ft.Text('* Comprimidos (.zip, .rar, .7z)', size=14),
                 ]),
-                border=ft.border.all(2, ft.colors.BLUE_400),
+                border=ft.border.all(2, ft.Colors.BLUE_400),
                 border_radius=10,
                 padding=20,
                 margin=ft.margin.only(top=10),
-                bgcolor=ft.colors.BLUE_GREY_800,
+                bgcolor=ft.Colors.BLUE_GREY_800,
             )
         ]),
         padding=30,
@@ -633,23 +632,23 @@ def main(page: ft.Page):
                     'Redimensionar imagenes',
                     size=24,
                     weight=ft.FontWeight.BOLD,
-                    color=ft.colors.BLUE_200,
+                    color=ft.Colors.BLUE_200,
                 ),
                 margin=ft.margin.only(bottom=10)
             ),
             ft.Row([
                 ft.ElevatedButton(
                     'Seleccionar Carpeta de entrada',
-                    icon=ft.icons.FOLDER_OPEN,
-                    color=ft.colors.WHITE,
-                    bgcolor=ft.colors.BLUE_900,
+                    icon=ft.Icons.FOLDER_OPEN,
+                    color=ft.Colors.WHITE,
+                    bgcolor=ft.Colors.BLUE_900,
                     on_click=lambda _: select_input_folder(),
                 ),
                 ft.ElevatedButton(
                     'Seleccionar Carpeta de salida',
-                    icon=ft.icons.FOLDER_OPEN,
-                    color=ft.colors.WHITE,
-                    bgcolor=ft.colors.BLUE_900,
+                    icon=ft.Icons.FOLDER_OPEN,
+                    color=ft.Colors.WHITE,
+                    bgcolor=ft.Colors.BLUE_900,
                     on_click=lambda _: select_output_folder(),
                 )
             ]),
@@ -665,7 +664,7 @@ def main(page: ft.Page):
                     ft.Text(
                         'Dimensiones de la imagen',
                         size=16,
-                        color=ft.colors.BLUE_200,
+                        color=ft.Colors.BLUE_200,
                     ),
                     ft.Row([
                         width_field,
@@ -678,9 +677,9 @@ def main(page: ft.Page):
             ),
             ft.ElevatedButton(
                 'Redimensionar imagenes',
-                icon=ft.icons.PHOTO_SIZE_SELECT_LARGE,
-                color=ft.colors.WHITE,
-                bgcolor=ft.colors.BLUE_900,
+                icon=ft.Icons.PHOTO_SIZE_SELECT_LARGE,
+                color=ft.Colors.WHITE,
+                bgcolor=ft.Colors.BLUE_900,
                 on_click=lambda _: resize_images(),
             ),
             resized_result_text,
@@ -689,17 +688,17 @@ def main(page: ft.Page):
                     ft.Text(
                         'Informacion:',
                         size=16,
-                        color=ft.colors.BLUE_200,
+                        color=ft.Colors.BLUE_200,
                     ),
                     ft.Text('* Se procesarán archivos .jpg, .jpeg y .png', size=14),
                     ft.Text('* Las imagenes originales no seran modificadas', size=14),
                     ft.Text("* Las imagenes dimensionadas se guardaran con el prefijo 'resized_'", size=14),
                 ]),
-                border=ft.border.all(2, ft.colors.BLUE_400),
+                border=ft.border.all(2, ft.Colors.BLUE_400),
                 border_radius=10,
                 padding=20,
                 margin=ft.margin.only(top=10),
-                bgcolor=ft.colors.BLUE_GREY_800,
+                bgcolor=ft.Colors.BLUE_GREY_800,
             )
         ]),
         padding=30,
@@ -714,15 +713,15 @@ def main(page: ft.Page):
                     'Convertir imagenes',
                     size=24,
                     weight=ft.FontWeight.BOLD,
-                    color=ft.colors.BLUE_200,
+                    color=ft.Colors.BLUE_200,
                 ),
                 margin=ft.margin.only(bottom=10)
             ),
             ft.ElevatedButton(
                 'Seleccionar Carpeta',
-                icon=ft.icons.IMAGE,
-                color=ft.colors.WHITE,
-                bgcolor=ft.colors.BLUE_900,
+                icon=ft.Icons.IMAGE,
+                color=ft.Colors.WHITE,
+                bgcolor=ft.Colors.BLUE_900,
                 on_click=lambda _: file_picker.pick_files(),
             ),
             ft.Container(
@@ -734,9 +733,9 @@ def main(page: ft.Page):
                 margin=ft.margin.only(top=10),
                 content=ft.ElevatedButton(
                     'Convertir imagen',
-                    icon=ft.icons.TRANSFORM,
-                    color=ft.colors.WHITE,
-                    bgcolor=ft.colors.BLUE_900,
+                    icon=ft.Icons.TRANSFORM,
+                    color=ft.Colors.WHITE,
+                    bgcolor=ft.Colors.BLUE_900,
                     on_click=lambda _: convert_image()
                 ),
             ),
@@ -746,18 +745,18 @@ def main(page: ft.Page):
                     ft.Text(
                         'Informacion:',
                         size=16,
-                        color=ft.colors.BLUE_200,
+                        color=ft.Colors.BLUE_200,
                     ),
                     ft.Text('* Formatos soportados: PNG, JPEG, JPGm WEBP, BMP, GIF', size=14),
                     ft.Text('* La imagen original no será modificada', size=14),
                     ft.Text("* La imagen convertida se guardará en la misma carpeta", size=14),
                     ft.Text("* Al convertir a JPEG, las imagenes con transparencia se convertirán a fondo blanco", size=14),
                 ]),
-                border=ft.border.all(2, ft.colors.BLUE_400),
+                border=ft.border.all(2, ft.Colors.BLUE_400),
                 border_radius=10,
                 padding=20,
                 margin=ft.margin.only(top=10),
-                bgcolor=ft.colors.BLUE_GREY_800,
+                bgcolor=ft.Colors.BLUE_GREY_800,
             )
         ]),
         padding=30,
@@ -772,15 +771,15 @@ def main(page: ft.Page):
                     'Extraer audio de los videos',
                     size=24,
                     weight=ft.FontWeight.BOLD,
-                    color=ft.colors.BLUE_200,
+                    color=ft.Colors.BLUE_200,
                 ),
                 margin=ft.margin.only(bottom=10)
             ),
             ft.ElevatedButton(
                 'Seleccionar Carpeta',
-                icon=ft.icons.FOLDER_OPEN,
-                color=ft.colors.WHITE,
-                bgcolor=ft.colors.BLUE_900,
+                icon=ft.Icons.FOLDER_OPEN,
+                color=ft.Colors.WHITE,
+                bgcolor=ft.Colors.BLUE_900,
                 on_click=lambda _: folder_picker.get_directory_path(),
             ),
             ft.Container(
@@ -789,9 +788,9 @@ def main(page: ft.Page):
             ),
             ft.ElevatedButton(
                 'Extraer audio',
-                icon = ft.icons.AUDIOTRACK,
-                color=ft.colors.WHITE,
-                bgcolor=ft.colors.BLUE_900,
+                icon = ft.Icons.AUDIOTRACK,
+                color=ft.Colors.WHITE,
+                bgcolor=ft.Colors.BLUE_900,
                 on_click=lambda _: extract_audio()
             ),
             current_video_text,
@@ -802,18 +801,18 @@ def main(page: ft.Page):
                     ft.Text(
                         'Informacion:',
                         size=16,
-                        color=ft.colors.BLUE_200,
+                        color=ft.Colors.BLUE_200,
                     ),
                     ft.Text('* Formatos soportados: MP4, AVI, MOV, MKV', size=14),
                     ft.Text('* Los archivos de audio se extraeran en formato MP3', size=14),
                     ft.Text("* Los audios extraido se guardarán en una carpeta 'audios dentro de la carpeta de los videos", size=14),
                     ft.Text("* Los archivos de video originales no serán modificados", size=14),
                 ]),
-                border=ft.border.all(2, ft.colors.BLUE_400),
+                border=ft.border.all(2, ft.Colors.BLUE_400),
                 border_radius=10,
                 padding=20,
                 margin=ft.margin.only(top=10),
-                bgcolor=ft.colors.BLUE_GREY_800,
+                bgcolor=ft.Colors.BLUE_GREY_800,
             )
         ]),
         padding=30,
@@ -828,15 +827,15 @@ def main(page: ft.Page):
                     'Fusionar archivos PDF',
                     size=24,
                     weight=ft.FontWeight.BOLD,
-                    color=ft.colors.BLUE_200,
+                    color=ft.Colors.BLUE_200,
                 ),
                 margin=ft.margin.only(bottom=10)
             ),
             ft.ElevatedButton(
                 'Seleccionar Carpeta',
-                icon=ft.icons.FOLDER_OPEN,
-                color=ft.colors.WHITE,
-                bgcolor=ft.colors.BLUE_900,
+                icon=ft.Icons.FOLDER_OPEN,
+                color=ft.Colors.WHITE,
+                bgcolor=ft.Colors.BLUE_900,
                 on_click=lambda _: folder_picker.get_directory_path(),
             ),
             ft.Container(
@@ -845,9 +844,9 @@ def main(page: ft.Page):
             ),
             ft.ElevatedButton(
                 'fusionar PDFs',
-                icon=ft.icons.MERGE_TYPE,
-                color=ft.colors.WHITE,
-                bgcolor=ft.colors.BLUE_900,
+                icon=ft.Icons.MERGE_TYPE,
+                color=ft.Colors.WHITE,
+                bgcolor=ft.Colors.BLUE_900,
                 on_click=lambda _: merge_pdfs()
             ),
             pdf_result_text,
@@ -864,15 +863,15 @@ def main(page: ft.Page):
                     'Renombrar archivos',
                     size=24,
                     weight=ft.FontWeight.BOLD,
-                    color=ft.colors.BLUE_200,
+                    color=ft.Colors.BLUE_200,
                 ),
                 margin=ft.margin.only(bottom=10)
             ),
             ft.ElevatedButton(
                 'Seleccionar Carpeta',
-                icon=ft.icons.FOLDER_OPEN,
-                color=ft.colors.WHITE,
-                bgcolor=ft.colors.BLUE_900,
+                icon=ft.Icons.FOLDER_OPEN,
+                color=ft.Colors.WHITE,
+                bgcolor=ft.Colors.BLUE_900,
                 on_click=lambda _: folder_picker.get_directory_path(),
             ),
             ft.Container(
@@ -889,9 +888,9 @@ def main(page: ft.Page):
             ),
             ft.ElevatedButton(
                 'Renombrar archivos',
-                icon=ft.icons.MERGE_TYPE,
-                color=ft.colors.WHITE,
-                bgcolor=ft.colors.BLUE_900,
+                icon=ft.Icons.MERGE_TYPE,
+                color=ft.Colors.WHITE,
+                bgcolor=ft.Colors.BLUE_900,
                 on_click=lambda _: rename_files()
             ),
             rename_result_text,
@@ -915,43 +914,43 @@ def main(page: ft.Page):
         group_alignment=-0.9,
         destinations=[
             ft.NavigationRailDestination(
-                icon=ft.icons.DELETE_FOREVER,
-                selected_icon=ft.icons.DELETE_FOREVER,
+                icon=ft.Icons.DELETE_FOREVER,
+                selected_icon=ft.Icons.DELETE_FOREVER,
                 label='Duplicados'
             ),
             ft.NavigationRailDestination(
-                icon=ft.icons.FOLDER_COPY,
-                selected_icon=ft.icons.FOLDER_COPY,
+                icon=ft.Icons.FOLDER_COPY,
+                selected_icon=ft.Icons.FOLDER_COPY,
                 label='Organizar'
             ),
             ft.NavigationRailDestination(
-                icon=ft.icons.PHOTO_SIZE_SELECT_LARGE,
-                selected_icon=ft.icons.PHOTO_SIZE_SELECT_LARGE,
+                icon=ft.Icons.PHOTO_SIZE_SELECT_LARGE,
+                selected_icon=ft.Icons.PHOTO_SIZE_SELECT_LARGE,
                 label='Redimensionar'
             ),
             ft.NavigationRailDestination(
-                icon=ft.icons.TRANSFORM,
-                selected_icon=ft.icons.TRANSFORM,
+                icon=ft.Icons.TRANSFORM,
+                selected_icon=ft.Icons.TRANSFORM,
                 label='Convertir'
             ),
             ft.NavigationRailDestination(
-                icon=ft.icons.AUDIOTRACK,
-                selected_icon=ft.icons.AUDIOTRACK,
+                icon=ft.Icons.AUDIOTRACK,
+                selected_icon=ft.Icons.AUDIOTRACK,
                 label='Extraer audio'
             ),
             ft.NavigationRailDestination(
-                icon=ft.icons.MERGE_TYPE,
-                selected_icon=ft.icons.MERGE_TYPE,
+                icon=ft.Icons.MERGE_TYPE,
+                selected_icon=ft.Icons.MERGE_TYPE,
                 label='Fusionar PDFs'
             ),
             ft.NavigationRailDestination(
-                icon=ft.icons.EDIT,
-                selected_icon=ft.icons.EDIT,
+                icon=ft.Icons.EDIT,
+                selected_icon=ft.Icons.EDIT,
                 label='Renombrar'
             ),
         ],
         on_change=change_view,
-        bgcolor=ft.colors.BLUE_GREY_900,
+        bgcolor=ft.Colors.BLUE_GREY_900,
     )
 
     fila = ft.Row([
