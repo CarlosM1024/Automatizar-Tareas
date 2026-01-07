@@ -6,13 +6,18 @@ A comprehensive collection of Python scripts designed to automate repetitive tas
 ![Maintenance](https://img.shields.io/badge/Maintained-Yes-brightgreen.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/CarlosM1024/Automatizar-Tareas)
 
+---
+
 ## 📋 Table of Contents
+
 - [Features](#-features)
 - [Installation](#-installation)
 - [Scripts Overview](#-scripts-overview)
 - [Usage Examples](#-usage-examples)
 - [License](https://img.shields.io/badge/License-MIT-green.svg)
 - [Contributing](#-contributing)
+
+---
 
 ## ✨ Features
 
@@ -24,13 +29,25 @@ A comprehensive collection of Python scripts designed to automate repetitive tas
 - **🚀 User-Friendly**: Simple command-line interface with prompts
 - **⚡ Efficient**: Optimized for performance and minimal resource usage
 
+---
+
+## 📸 Screenshots
+
+<p align="center">
+    <img src="screenshots/image.png" width="250" alt="Captura de pantalla"/>
+</p>
+
+---
+
 ## 📦 Installation
 
 ### Prerequisites
+
 - Python 3.8 or higher
 - pip package manager
 
 ### Clone and Setup
+
 ```bash
 # Clone the repository.
 git clone https://github.com/CarlosM1024/Automatizar-Tareas.git
@@ -39,18 +56,23 @@ cd Automatizar-Tareas
 # Install dependencies
 pip install -r requirements.txt
 ````
+
+---
+
 ## 📂 Scripts-overview
 
-Here's a list of the scripts available in this repository:
+Here is a list of the scripts available in this repository:
 
--   **app.py**: A comprehensive script with multiple functionalities (details in the script itself).
--   **borrar\_dup.py**: Script to delete duplicate files.
--   **cambiar\_nombre.py**: Script to rename files.
--   **convertidor.py**: Script for file conversion.
--   **extraer\_audio.py**: Script to extract audio from video files.
--   **fusionar\_pdf.py**: Script to merge PDF files.
--   **organizar.py**: Script to organize files in a directory.
--   **redimensiona.py**: Script to resize images.
+- **app.py**: A comprehensive script with multiple functionalities (details in the script itself).
+- **borrar\_dup.py**: Script to delete duplicate files.
+- **cambiar\_nombre.py**: Script to rename files.
+- **convertidor.py**: Script for file conversion.
+- **extraer\_audio.py**: Script to extract audio from video files.
+- **fusionar\_pdf.py**: Script to merge PDF files.
+- **organizar.py**: Script to organize files in a directory.
+- **redimensiona.py**: Script to resize images.
+
+---
 
 ## 🎯 Usage-examples
 
@@ -68,7 +90,7 @@ pip install -r requirements.txt
 
 ### Examples
 
-1.  **Running the `convertidor.py` script:**
+1. **Running the `convertidor.py` script:**
 
     ```bash
     python convertidor.py
@@ -76,7 +98,7 @@ pip install -r requirements.txt
 
     Follow the script's prompts to convert files.
 
-2.  **Running the `fusionar_pdf.py` script:**
+2. **Running the `fusionar_pdf.py` script:**
 
     ```bash
     python fusionar_pdf.py
@@ -84,13 +106,18 @@ pip install -r requirements.txt
 
     This script will guide you through the process of merging PDF files.
 
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+---
+
 ## 🙏 Credits and Acknowledgments
 
 ### Primary  Inspiration
+
 This project was initially inspired by Python automation tutorials from:
 
 **Channel Name:** Código Espinoza - Automatiza tu Vida  
@@ -98,27 +125,31 @@ This project was initially inspired by Python automation tutorials from:
 **Creator:** Iván Espinoza
 
 ### Educational Resources
-The following resources were particularly helpful in understanding 
+
+The following resources were particularly helpful in understanding
 Python automation concepts:
+
 - Various Python automation tutorials on YouTube
 - Official documentation of Python libraries (Pillow, PyPDF2, moviepy, flet)
 - Programming communities like Stack Overflow and GitHub
 
 ### Note
-While learning from online tutorials, all code in this repository has been 
-written, tested, and integrated by me. This project represents my personal 
-implementation and understanding of automation concepts, with added features 
-and improvements beyond the basic tutorials.
+
+While learning from online tutorials, all code in this repository has been written, tested, and integrated by me. This project represents my personal implementation and understanding of automation concepts, with added features and improvements beyond the basic tutorials.
+
+---
 
 ## 🤝 Contributing
 
 If you'd like to contribute to this project, feel free to submit a pull request. Please make sure your code follows the existing style and includes appropriate comments.
 
-1.  Fork the repository.
-2.  Create a new branch for your feature or bug fix.
-3.  Commit your changes.
-4.  Push to the branch.
-5.  Submit a pull request.
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes.
+4. Push to the branch.
+5. Submit a pull request.
+
+---
 
 ## 👤 Author
 
