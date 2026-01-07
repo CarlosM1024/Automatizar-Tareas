@@ -11,6 +11,7 @@ A comprehensive collection of Python scripts designed to automate repetitive tas
 - [Installation](#-installation)
 - [Scripts Overview](#-scripts-overview)
 - [Usage Examples](#-usage-examples)
+- [License](https://img.shields.io/badge/License-MIT-green.svg)
 - [Contributing](#-contributing)
 
 ## ✨ Features
@@ -83,6 +84,32 @@ pip install -r requirements.txt
 
     This script will guide you through the process of merging PDF files.
 
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Credits and Acknowledgments
+
+### Primary  Inspiration
+This project was initially inspired by Python automation tutorials from:
+
+**Channel Name:** Código Espinoza - Automatiza tu Vida  
+**Channel Link:** [[Código Espinoza - Automatiza tu Vida](https://www.youtube.com/@CodigoEspinoza)]  
+**Creator:** Iván Espinoza
+
+### Educational Resources
+The following resources were particularly helpful in understanding 
+Python automation concepts:
+- Various Python automation tutorials on YouTube
+- Official documentation of Python libraries (Pillow, PyPDF2, moviepy, flet)
+- Programming communities like Stack Overflow and GitHub
+
+### Note
+While learning from online tutorials, all code in this repository has been 
+written, tested, and integrated by me. This project represents my personal 
+implementation and understanding of automation concepts, with added features 
+and improvements beyond the basic tutorials.
+
 ## 🤝 Contributing
 
 If you'd like to contribute to this project, feel free to submit a pull request. Please make sure your code follows the existing style and includes appropriate comments.
@@ -92,3 +119,9 @@ If you'd like to contribute to this project, feel free to submit a pull request.
 3.  Commit your changes.
 4.  Push to the branch.
 5.  Submit a pull request.
+
+## 👤 Author
+
+**Carlos Antonio Martinez Miranda**
+
+GitHub: [@CarlosM1024](https://github.com/CarlosM1024)
