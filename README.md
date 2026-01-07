@@ -34,7 +34,7 @@ A comprehensive collection of Python scripts designed to automate repetitive tas
 ## 📸 Screenshots
 
 <p align="center">
-    <img src="screenshots/image.png" width="250" alt="Captura de pantalla"/>
+    <img src="screenshots/image.png" alt="Captura de pantalla"/>
 </p>
 
 ---
